@@ -1746,6 +1746,34 @@ p.form-message.success, p.form-message.error {
         margin: 0;
       }
 
+      .float{
+        position:fixed;
+        width:60px;
+        height:60px;
+        bottom:20px;
+        left:25px;
+        background-color:#0C9;
+        color:#FFF;
+        border-radius:50px;
+        text-align:center;
+          box-shadow: 2px 3px 15px -4px rgba(0,0,0,0.59);
+          z-index: 10;
+          cursor: pointer;
+      }
+ 
+      .pp{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          font-size: 45px;
+          text-align: center;
+      }
+      
+      .my-float{
+        margin-top:22px;
+      }
+
   /* Smartphone Portrait and Landscape */
   @media only screen
     and (min-device-width : 320px)
