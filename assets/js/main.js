@@ -143,7 +143,7 @@
 
 const lang = document.querySelector(".selectpicker")
 
-lang.addEventListener('click', () =>{
+lang.addEventListener('change', () =>{
     if(lang.value == 'Shqip'){
         location.replace("https://rubinelezi.com/shqip.html")
     }else{
