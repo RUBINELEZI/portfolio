@@ -1,5 +1,7 @@
 (function($){
-    
+   
+
+
     "use strict";
     
     //===== Prealoder
@@ -136,3 +138,13 @@
     
     
 }(jQuery));
+
+
+
+const lang = document.querySelector(".selectpicker")
+
+lang.addEventListener('click', () =>{
+    if(lang.value == 'Shqip'){
+        location.replace("https://rubinelezi.com/shqip.html")
+    }
+})
