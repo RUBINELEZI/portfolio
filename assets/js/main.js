@@ -149,15 +149,15 @@ lang.addEventListener('change', () =>{
    
 
     if(lang.value == 'Shqip'){
-        location.replace("https://rubinelezi.com/shqip.html")
-        document.querySelector('.selectpicker').innerHTML = lang.value;
+        location.replace("http://rubinelezi.com/shqip.html")
+       
     }else{
         location.replace("https://rubinelezi.com")
-        document.querySelector('.selectpicker').innerHTML = lang.value;
+      
     }
 })
 
 window.onload = function() {
-    document.querySelector('.selectpicker').innerHTML = localStorage.getItem(".selectpicker");
+   lang.value = localStorage.getItem(".selectpicker");
    
 }
