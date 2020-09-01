@@ -1781,4 +1781,13 @@ p.form-message.success, p.form-message.error {
       .mobileShow {display: inline;}
   }
 
+
+
+  /* language */
+
+  .selectpicker{
+    border: 2px solid #754ef9;
+    border-radius:5px ;
+  }
+
 /*# sourceMappingURL=style.css.map */

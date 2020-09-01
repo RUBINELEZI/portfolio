@@ -160,4 +160,5 @@ lang.addEventListener('change', () =>{
 window.onload = function() {
    lang.value = localStorage.getItem(".selectpicker");
    
+
 }
