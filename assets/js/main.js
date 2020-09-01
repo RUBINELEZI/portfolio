@@ -144,13 +144,20 @@
 const lang = document.querySelector(".selectpicker")
 
 lang.addEventListener('change', () =>{
-    window.onload = function() {
-        console.log(localStorage.getItem("selectpicker"));
-      }
+
+    localStorage.setItem(".selectpicker", lang.value);
+   
 
     if(lang.value == 'Shqip'){
         location.replace("https://rubinelezi.com/shqip.html")
+        document.querySelector('.selectpicker').innerHTML = lang.value;
     }else{
         location.replace("https://rubinelezi.com")
+        document.querySelector('.selectpicker').innerHTML = lang.value;
     }
 })
+
+window.onload = function() {
+    document.querySelector('.selectpicker').innerHTML = localStorage.getItem(".selectpicker");
+   
+}
