@@ -144,6 +144,10 @@
 const lang = document.querySelector(".selectpicker")
 
 lang.addEventListener('change', () =>{
+    window.onload = function() {
+        console.log(localStorage.getItem("selectpicker"));
+      }
+
     if(lang.value == 'Shqip'){
         location.replace("https://rubinelezi.com/shqip.html")
     }else{
