@@ -142,11 +142,11 @@
 
 
 const lang = document.querySelector(".selectpicker")
-localStorage.setItem(".selectpicker", lang.value);
+
 lang.addEventListener('change', () =>{
 
-    
     localStorage.setItem(".selectpicker", lang.value);
+   
 
     if(lang.value == 'Shqip'){
         location.replace("http://rubinelezi.com/shqip.html")
