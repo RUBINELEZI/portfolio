@@ -1,0 +1,2 @@
+# In the _redirects file in the website's root
+/.well-known/matrix/* https://matrix.rubinelezi.com/.well-known/matrix/:splat 200!
