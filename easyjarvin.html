@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EasyJarvin | AI sales assistant for WhatsApp</title>
+    <meta name="description" content="EasyJarvin helps sales agents automate their WhatsApp conversations with clients: drafted replies, lead qualification, follow-ups and conversation summaries. Built on Claude.">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/LineIcons.css">
+    <link rel="stylesheet" href="assets/css/easyjarvin.css">
+    <style>
+        :root { --accent: #754ef9; --ink: #32333c; --muted: #6b6f80; --soft: #f6f3ff; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: "Poppins", sans-serif; color: var(--ink); background: #fff; line-height: 1.6; }
+        a { color: inherit; text-decoration: none; }
+        ul { list-style: none; }
+        .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .btn { display: inline-block; background: var(--accent); color: #fff; font-weight: 600;
+               padding: 13px 28px; border-radius: 50px; transition: transform .15s, box-shadow .15s; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(117,78,249,.3); }
+        .btn.ghost { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+
+        nav { padding: 22px 0; }
+        nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .logo { font-weight: 700; font-size: 22px; }
+        .logo span { color: var(--accent); }
+        nav .links { display: flex; gap: 24px; font-size: 15px; color: var(--muted); }
+        nav .links a:hover { color: var(--accent); }
+
+        .hero { padding: 60px 0 90px; }
+        .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; align-items: center; }
+        .hero h1 { font-size: 48px; line-height: 1.15; margin: 18px 0 20px; }
+        .hero h1 em { font-style: normal; color: var(--accent); }
+        .hero p.lead { font-size: 19px; color: var(--muted); margin-bottom: 30px; }
+        .hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+        .hero .ej-chat { margin-top: 0; }
+
+        section { padding: 90px 0; }
+        section.soft { background: var(--soft); }
+        h2 { font-size: 34px; line-height: 1.25; margin-bottom: 14px; }
+        .sub { color: var(--muted); font-size: 17px; max-width: 640px; margin-bottom: 44px; }
+        .center { text-align: center; }
+        .center .sub { margin-left: auto; margin-right: auto; }
+
+        .grid { display: grid; gap: 22px; }
+        .g3 { grid-template-columns: repeat(3, 1fr); }
+        .card { background: #fff; border-radius: 16px; padding: 28px; box-shadow: 0 6px 24px rgba(50,51,60,.07); }
+        .card i { font-size: 28px; color: var(--accent); display: inline-block; margin-bottom: 14px; }
+        .card h3 { font-size: 18px; margin-bottom: 8px; }
+        .card p { color: var(--muted); font-size: 15px; }
+
+        .steps { counter-reset: s; }
+        .step { position: relative; padding-left: 64px; margin-bottom: 30px; }
+        .step::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 0;
+            width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff;
+            display: grid; place-items: center; font-weight: 700; }
+        .step h3 { font-size: 18px; margin-bottom: 4px; }
+        .step p { color: var(--muted); }
+
+        .split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .tags span { background: #fff; border: 1px solid #e3dcff; color: var(--ink); padding: 8px 16px;
+            border-radius: 30px; font-size: 14px; }
+        .tags span.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+        .cta { background: var(--ink); color: #fff; border-radius: 24px; padding: 60px 40px; text-align: center; }
+        .cta p { color: #c9cad3; margin: 0 auto 28px; max-width: 560px; }
+        .cta .btn.ghost { color: #fff; border-color: #fff; }
+        .cta .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+        footer { padding: 40px 0; color: var(--muted); font-size: 14px; }
+        footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        footer a { color: var(--accent); }
+
+        @media (max-width: 900px) {
+            .hero .wrap, .split { grid-template-columns: 1fr; gap: 40px; }
+            .g3 { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 36px; }
+            h2 { font-size: 28px; }
+            nav .links { display: none; }
+            section { padding: 64px 0; }
+            .cta { padding: 44px 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="wrap">
+        <a class="logo" href="easyjarvin.html">Easy<span>Jarvin</span></a>
+        <div class="links">
+            <a href="#features">Features</a>
+            <a href="#how">How it works</a>
+            <a href="#industries">Industries</a>
+            <a href="index.html">Team</a>
+        </div>
+        <a class="btn" href="#contact">Book a demo</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="wrap">
+        <div>
+            <span class="ej-badge">AI sales assistant for WhatsApp</span>
+            <h1>Your sales team, <em>on autopilot</em> in WhatsApp.</h1>
+            <p class="lead">EasyJarvin helps sales agents automate the repetitive part of their WhatsApp conversations with clients, so they can spend their time closing deals.</p>
+            <div class="ctas">
+                <a class="btn" href="#contact">Book a demo</a>
+                <a class="btn ghost" href="#how">See how it works</a>
+            </div>
+        </div>
+        <div class="ej-chat" aria-label="Example WhatsApp conversation handled by EasyJarvin">
+            <div class="ej-chat-head"><i class="lni-whatsapp"></i> Example conversation</div>
+            <div class="ej-msg in">Hi, how much is teeth whitening?</div>
+            <div class="ej-msg out">Hi! Whitening starts with a short consultation so the dentist can check what suits you. Would you like me to book one this week?</div>
+            <div class="ej-msg in">Yes, Thursday afternoon?</div>
+            <div class="ej-msg out">Thursday at 16:00 is free. Shall I reserve it for you?</div>
+            <div class="ej-note">Drafted by EasyJarvin · approved by the sales rep</div>
+        </div>
+    </div>
+</header>
+
+<section class="soft">
+    <div class="wrap center">
+        <h2>Sales happens in WhatsApp. So does the busywork.</h2>
+        <p class="sub">Sales agents answer the same questions all day, lose leads when they can't reply fast enough, and forget follow-ups when things get busy. EasyJarvin takes that load off them.</p>
+    </div>
+</section>
+
+<section id="features">
+    <div class="wrap">
+        <h2>What EasyJarvin does</h2>
+        <p class="sub">It works alongside your sales agents in the conversations they already have.</p>
+        <div class="grid g3">
+            <div class="card"><i class="lni-pencil-alt"></i><h3>Drafts replies</h3><p>Suggests on-brand answers in seconds, in the tone your team uses with clients.</p></div>
+            <div class="card"><i class="lni-target"></i><h3>Qualifies leads</h3><p>Asks the right questions and flags who is ready to buy, so agents focus on the hottest leads.</p></div>
+            <div class="card"><i class="lni-question-circle"></i><h3>Answers FAQs</h3><p>Handles prices, services and availability questions using your business's own information.</p></div>
+            <div class="card"><i class="lni-alarm-clock"></i><h3>Follows up</h3><p>Reminds and re-engages clients who went quiet, so no lead is forgotten.</p></div>
+            <div class="card"><i class="lni-files"></i><h3>Summarizes chats</h3><p>Turns long threads into short summaries so anyone on the team can pick up where it left off.</p></div>
+            <div class="card"><i class="lni-calendar"></i><h3>Books next steps</h3><p>Moves conversations toward a meeting, a consultation or a sale.</p></div>
+        </div>
+    </div>
+</section>
+
+<section id="how" class="soft">
+    <div class="wrap split">
+        <div>
+            <h2>How it works</h2>
+            <p class="sub">Set up once, then let EasyJarvin work in the background of every conversation.</p>
+        </div>
+        <div class="steps">
+            <div class="step"><h3>Connect WhatsApp</h3><p>Link the sales agent's WhatsApp so EasyJarvin can see incoming client messages.</p></div>
+            <div class="step"><h3>Teach it your business</h3><p>Add your services, prices, FAQs and sales style. EasyJarvin uses them in every reply.</p></div>
+            <div class="step"><h3>Sell faster</h3><p>EasyJarvin drafts, qualifies and follows up while your agent stays in control and approves what goes out.</p></div>
+        </div>
+    </div>
+</section>
+
+<section id="industries">
+    <div class="wrap split">
+        <div>
+            <span class="ej-badge">First pilot</span>
+            <h2>Starting with dental clinics</h2>
+            <p class="sub" style="margin-bottom:0">Our MVP is live with our first client, a dental clinic sales rep. EasyJarvin handles patient inquiries, explains treatments and helps book consultations.</p>
+        </div>
+        <div>
+            <h3 style="font-size:18px">Built to scale to any field that sells through WhatsApp</h3>
+            <div class="tags">
+                <span class="on">Dental clinics</span>
+                <span>Aesthetic &amp; medical clinics</span>
+                <span>Real estate</span>
+                <span>Education</span>
+                <span>Car sales</span>
+                <span>Local services</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="soft">
+    <div class="wrap center">
+        <span class="ej-badge">Built on Claude</span>
+        <h2>Powered by Claude, from Anthropic</h2>
+        <p class="sub">EasyJarvin uses Claude to understand client messages, keep a consistent sales tone across long conversations, and decide the best next step.</p>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="wrap">
+        <div class="cta">
+            <h2>Want EasyJarvin for your sales team?</h2>
+            <p>We're onboarding early clients now. Reach out and we'll show you how it works with your own conversations.</p>
+            <div class="ctas">
+                <a class="btn" href="https://wa.me/355684407343" target="_blank" rel="noopener">Message us on WhatsApp</a>
+                <a class="btn ghost" href="mailto:contact@rubinelezi.com?subject=EasyJarvin%20demo">contact@rubinelezi.com</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="wrap">
+        <span>© 2026 EasyJarvin · Tirana, Albania</span>
+        <span>Co-founded by <a href="index.html">Rubin Elezi</a></span>
+    </div>
+</footer>
+
+</body>
+</html>
